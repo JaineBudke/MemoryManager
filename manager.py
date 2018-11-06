@@ -3,14 +3,10 @@ from tkinter import *
 
 class Window(Frame):
 
-
-
     def __init__(self, master=None):
         Frame.__init__(self, master)                 
         self.master = master
         self.init_window()
-
-
 
 
     #Creation of init_window
@@ -27,10 +23,6 @@ class Window(Frame):
         B = Button(root, text = "Memória", command=showMemory())
 
         B.place(x = 50,y = 50)
-
-        
-
-
 
 
 root = Tk()

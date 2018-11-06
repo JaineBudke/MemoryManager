@@ -35,6 +35,7 @@ def plot_pizza( labels, values ):
     total = sum(titles)
     plt.pie(titles, explode=explode, labels=labels, colors=color, autopct=lambda p: '{:.0f}'.format(p * total / 100), shadow=True, startangle=90)
 
+
 # PLOTAR GRAFICO 1: MEMORIA LIVRE X MEMORIA TOTAL 
 def plotGraph1():
 	labels1 = ['Mem. Livre', 'Mem. Total']
