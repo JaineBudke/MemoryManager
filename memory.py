@@ -18,7 +18,7 @@ swapFreeSplit = text[15].split(" ")
 memTotal = int(memTotalSplit[8])
 memFree = int(memFreeSplit[10])
 memAvailable = int(memAvailableSplit[5])
-memCached = int(memCachedSplit[10])
+memCached = int(memCachedSplit[11])
 swapTotal = int(swapTotalSplit[7])
 swapFree = int(swapFreeSplit[8])
 
@@ -35,61 +35,4 @@ def plot_pizza( labels, values ):
     total = sum(titles)
     plt.pie(titles, explode=explode, labels=labels, colors=color, autopct=lambda p: '{:.0f}'.format(p * total / 100), shadow=True, startangle=90)
 
-
-# PLOTAR GRAFICO 1: MEMORIA LIVRE X MEMORIA TOTAL 
-def plotGraph1():
-	labels1 = ['Mem. Livre', 'Mem. Total']
-	values1 = [memFree, memTotal-memFree]
-
-	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
-	plot_pizza( labels1, values1 )
-	plt.axis('equal') 
-	plt.show()
-
-
-# PLOTAR GRAFICO 2: MEMORIA ACESSIVEL X MEMORIA TOTAL 
-def plotGraph2():
-	labels2 = ['Mem. Acessivel', 'Mem. Total']
-	values2 = [memAvailable, memTotal-memAvailable]
-
-	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
-	plot_pizza( labels2, values2 )
-	plt.axis('equal') 
-	plt.show()
-
-
-# PLOTAR GRAFICO 3: MEMORIA CACHE X MEMORIA TOTAL
-def plotGraph3():
-	labels3 = ['Mem. Cache', 'Mem. Total']
-	values3 = [memCached, memTotal-memCached]
-
-	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
-	plot_pizza( labels3, values3 )
-	plt.axis('equal') 
-	plt.show()
-
-
-# PLOTAR GRAFICO 4: SWAP TOTAL X MEMORIA TOTAL
-def plotGraph4():
-	labels4 = ['Swap', 'Mem. Total']
-	values4 = [swapTotal, memTotal-swapTotal]
-
-	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
-	plot_pizza( labels4, values4 )
-	plt.axis('equal') 
-	plt.show()
-
-
-# PLOTAR GRAFICO 5: SWAP TOTAL X SWAP LIVRE
-def plotGraph5():
-	labels5 = ['Swap Total', 'Swap Livre']
-	values5 = [swapFree, swapTotal-swapFree]
-
-	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
-	plot_pizza( labels5, values5 )
-	plt.axis('equal') 
-	plt.show()
-
-
-plotGraph2()
 

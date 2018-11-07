@@ -20,7 +20,7 @@ class Window(Frame):
 
 
 		# button
-        B = Button(root, text = "Memória", command=showMemory())
+        B = Button(root, text = "Memória")
 
         B.place(x = 50,y = 50)
 
