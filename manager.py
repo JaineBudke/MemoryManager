@@ -8,8 +8,12 @@ import random
 import memory
 
 class Window(QtGui.QDialog):
+
+    listWidget = None
     def __init__(self, parent=None):
         super(Window, self).__init__(parent)
+
+        self.listWidget = None
 
         # a figure instance to plot on
         self.figure = Figure()
@@ -50,16 +54,39 @@ class Window(QtGui.QDialog):
         plot5.triggered.connect(lambda: self.plot( memory.plotGraph5() ))
         menuMemoria.addAction(plot5)
 
+        ##plota grafico 5
+        plot6 = QtGui.QAction('Faltas de páginas por processos', self)        
+        plot6.triggered.connect(lambda: self.listview( memory.pageFaults() ))
+        menuMemoria.addAction(plot6)
+
         # set the layout
-        layout = QtGui.QVBoxLayout()
-        layout.addWidget(self.myQMenuBar)
-        layout.addWidget(self.toolbar)
-        layout.addWidget(self.canvas)
-        self.setLayout(layout)
+        self.layout = QtGui.QVBoxLayout()
+        self.layout.addWidget(self.myQMenuBar)
+        self.layout.addWidget(self.toolbar)
+        self.layout.addWidget(self.canvas)
+        self.setLayout(self.layout)
         
+    def listview(self, data):
+        '''show list with page faults'''
+        self.listWidget = QtGui.QListWidget()
+	
+        for text in data:
+            self.listWidget.addItem(text)
+            
+        self.layout.removeWidget(self.canvas)
+        if( self.listWidget != None and self.layout.indexOf(self.listWidget) != -1):
+            self.listWidget.show()
+        else:
+            self.layout.addWidget(self.listWidget)
 
     def plot(self, data):
-        ''' plot some random stuff '''
+        ''' plot some random stuff 
+            @see: https://stackoverflow.com/questions/12459811/how-to-embed-matplotlib-in-pyqt-for-dummies
+        '''
+        
+        if( self.listWidget != None):
+            self.listWidget.hide()
+            self.layout.addWidget(self.canvas)
 
         # create an axis
         ax = self.figure.add_subplot(111)
@@ -67,8 +94,7 @@ class Window(QtGui.QDialog):
         # discards the old graph
         ax.clear()
 
-        # plot data
-        
+        # plot data 
         labels = data[0]
         titles = data[1]
         color = ['lightblue', 'green']

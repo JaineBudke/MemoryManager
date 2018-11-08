@@ -85,7 +85,7 @@ def plotGraph5():
 
 def pageFaults():
 	# cria arquivo com informacoes dos processos ativos
-    subprocess.call(["ps -ef -o pid,min_flt,maj_flt > pageFaults.txt"], shell=True)
+    subprocess.call(["ps -o pid,command,min_flt,maj_flt > pageFaults.txt"], shell=True)
 
 
     # abre arquivo com informacoes
@@ -95,23 +95,6 @@ def pageFaults():
     # fecha arquivo
     arc.close()
 
-
-    # cria nova interface grafica
-    pageFault = Tk()
-    pageFault.title("PAGE FAULTS")
-    pageFault.geometry('350x200')
-
-    scrollbar = Scrollbar(pageFault)
-    scrollbar.pack(side=RIGHT, fill=Y)
-
-    listbox = Listbox(pageFault, yscrollcommand=scrollbar.set)
-    for line in text:
-        listbox.insert(END, line)
-    listbox.pack(side=LEFT, fill=BOTH)
-
-    scrollbar.config(command=listbox.yview)
-
-
-    pageFault.mainloop()
+    return text
 
 
