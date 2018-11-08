@@ -1,6 +1,4 @@
 import subprocess
-from tkinter import *
-import matplotlib.pyplot as plt 
 
 
 # abre arquivo de informacoes sobre memoria
@@ -78,8 +76,8 @@ def plotGraph4():
 
 # PLOTAR GRAFICO 5: SWAP TOTAL X SWAP LIVRE
 def plotGraph5():
-	labels5 = ['Swap Total', 'Swap Livre']
-	values5 = [swapFree, swapTotal-swapFree]
+	labels5 = ['Swap Livre', 'Swap Usado']
+	values5 = [swapFree, swapTotal - swapFree]
 
 	# Determina que as proporções sejam iguais ('equal') de modo a desenhar o círculo
 	return [labels5, values5]

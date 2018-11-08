@@ -35,6 +35,20 @@ class Window(QtGui.QDialog):
         plot2.triggered.connect(lambda: self.plot( memory.plotGraph2() ))
         menuMemoria.addAction(plot2)
         
+        ##plota grafico 3
+        plot3 = QtGui.QAction('Memória Total x Memória Cache', self)        
+        plot3.triggered.connect(lambda: self.plot( memory.plotGraph3() ))
+        menuMemoria.addAction(plot3)
+
+        ##plota grafico 4
+        plot4 = QtGui.QAction('Swap Total x Memória Total', self)        
+        plot4.triggered.connect(lambda: self.plot( memory.plotGraph4() ))
+        menuMemoria.addAction(plot4)
+
+        ##plota grafico 5
+        plot5 = QtGui.QAction('Swap Usado x Swap livre', self)        
+        plot5.triggered.connect(lambda: self.plot( memory.plotGraph5() ))
+        menuMemoria.addAction(plot5)
 
         # set the layout
         layout = QtGui.QVBoxLayout()
