@@ -85,7 +85,7 @@ def plotGraph5():
 
 def pageFaults():
 	# cria arquivo com informacoes dos processos ativos
-    subprocess.call(["ps -o pid,command,min_flt,maj_flt > pageFaults.txt"], shell=True)
+    subprocess.call(["ps -eo pid,command,min_flt,maj_flt > pageFaults.txt"], shell=True)
 
 
     # abre arquivo com informacoes
